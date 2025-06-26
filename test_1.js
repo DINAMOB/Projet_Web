@@ -8,9 +8,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb://localhost:27017/maBase", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true})
+mongoose.connect("mongodb://localhost:27017/maBase")
     .then(async () => {
         console.log("Connecté à MongoDB");
         const root = new User({
@@ -35,7 +33,7 @@ app.post("/register", async (req, res) => {
     if (!username || !password || !email)
         return res.status(400).send("Tous les champ sont requis");
     const hashPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({username, hashPassword, email});
+    const newUser = new User({username, password: hashPassword, email});
     newUser.save()
         .then(user => res.status(201).send("Utilisateur créé avec succès !"))
         .catch(err => res.status(500).send("Erreur lors de la création de l\'utilisateur : " + err));
