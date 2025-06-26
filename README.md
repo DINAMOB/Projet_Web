@@ -26,6 +26,12 @@ chmod +x setup_mongodb
 ./setup_mongodb
 ```
 
+OU
+```bash
+chmod +x mongodb_docker.sh
+./mongodb_docker.sh
+```
+
 ### ✅ Ce que fait ce script :
 
 - Ajoute manuellement le dépôt MongoDB 6.0 compatible Ubuntu 24.04
