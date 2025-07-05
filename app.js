@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb://localhost:27017/maBase")
+mongoose.connect("mongodb://mongo:27017/maBase")
     .then(async () => {
         console.log("Connecté à MongoDB");
         const root = new User({
